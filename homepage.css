@@ -105,24 +105,38 @@ font-weight: lighter;
 }
 
 /* Center text styling */
+/* Center text styling */
 .center-text {
     position: absolute;
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust alignment */
-    background: rgba(133, 83, 152, 0.7); /* Translucent black background */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(133, 83, 152, 0.7);
     color: white;
     padding: 20px 50px;
     border-radius: 10px;
     text-align: center;
     max-width: 90%;
-    font-size: 2rem; /* Larger font size */
+    font-size: 2rem;  /* Adjust for larger screens */
     font-weight: bold;
     font-family: Garamond, serif;
     line-height: 1.5;
-    z-index: 1; /* Keep text above images */
+    z-index: 1;
     box-shadow: 0 4px 8px rgba(51, 23, 87, 0.658);
 }
+.center-text {
+    font-size: 4vw; /* Adjusts text size based on screen width */
+}
+
+/* Responsive design for small screens */
+@media (max-width: 768px) {
+    .center-text {
+        font-size: 1.5rem;  /* Smaller font size for mobile */
+        padding: 10px 30px;  /* Reduce padding */
+        max-width: 80%;  /* Slightly reduce width */
+    }
+}
+
 
 /* About Section Styles */
 .about-container {
