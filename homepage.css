@@ -3,32 +3,28 @@
 body{
     margin: 0;
     font-family: garamond;
-    font-weight: lighter;
-    font-size: x-small;
-    background-color: rgb(255, 255, 255);
-    background-image: url('img/painting\ blue\ sky.jpg');
-    background-size: cover; /* Adjusts the image to cover the entire screen */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-position: center; 
+    font-size: xx-small;
+    background-color: black;
 }
+
 header{
     display: flex;
     justify-content: space-between;
-    background-color: rgb(47, 23, 47);
-    padding: 20px 20px;
+    background-color: rgb(180, 130, 180);
+    padding: 10px 20px;
 }
+
+
 .container{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    
 }
+
 .topic{
     font-size: 1.5rem;
     margin: 0;
-    font-weight: lighter;
-    color: #ffffff;
     white-space: nowrap;
 }
 .nav-links {
@@ -37,22 +33,26 @@ display: flex;
 gap: 20px;
 margin: 0;
 padding: 0;
-font-weight: lighter;
 }
+
 .nav-links li{
     margin: 0;
 }
+
 .nav-links a{
 text-decoration:none;
-color: rgb(245, 245, 245);
-font-weight: lighter;
+color: rgb(4, 3, 2);
+font-weight: bold;
 }
+
 .nav-links a:hover{
     color: rgb(76, 13, 88);
     transform: scale(1.2);
     
     text-shadow: 6px;
 }
+
+
 /*responsive*/
 @media (max-width: 768px) {
     .container {
@@ -107,111 +107,19 @@ font-weight: lighter;
 /* Center text styling */
 .center-text {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(133, 83, 152, 0.7); /* Translucent background */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust alignment */
+    background: rgba(133, 83, 152, 0.7); /* Translucent black background */
     color: white;
-    padding: 10px 30px;  /* Reduced padding */
+    padding: 20px 50px;
     border-radius: 10px;
     text-align: center;
-    max-width: 70%;  /* Limit max width */
-    font-size: 1.5rem;  /* Smaller font size for larger screens */
+    max-width: 90%;
+    font-size: 2rem; /* Larger font size */
     font-weight: bold;
     font-family: Garamond, serif;
-    line-height: 1.3;
-    z-index: 1;
+    line-height: 1.5;
+    z-index: 1; /* Keep text above images */
     box-shadow: 0 4px 8px rgba(51, 23, 87, 0.658);
-    margin-top: 50px; /* Prevents overlap with navigation */
 }
-
-/* Responsive design for smaller screens */
-@media (max-width: 768px) {
-    .center-text {
-        font-size: 1.2rem;  /* Even smaller font size for mobile */
-        padding: 8px 20px;  /* Further reduce padding */
-        max-width: 90%;  /* Limit max width for mobile */
-        margin-top: 20px;  /* Reduced top margin for mobile */
-        margin-left: 10px; /* Add left margin for spacing */
-        margin-right: 10px; /* Add right margin for spacing */
-    }
-}
-
-
-
-/* About Section Styles */
-.about-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px auto;
-    padding: 030px;
-    max-width: 1200px;
-    background-color:  rgb(47, 23, 47);
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-
-.about-image {
-    flex: 1;
-    max-width: 50%;
-    margin-right: 20px;
-}
-
-.about-img {
-    width: 80%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-/* Text Box Styles */
-.about-text {
-    flex: 1;
-    padding: 20px;
-    background-color: rgb(47, 23, 47);
-    color: #ededed;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.about-text h2 {
-    color: #ffffff;
-    font-weight: lighter;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    text-decoration: underline;
-}
-.about-text p {
-    color: #dfdfdf;
-    font-size: 1rem;
-    line-height: 1.6;
-    font-weight: lighter;
-    font-family:garamond;
-}
-/* Responsive Design */
-@media (max-width: 768px) {
-    .about-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .about-image {
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
-
-    .about-text {
-        width: 100%;
-    }
-}
-/* Background Animation Container */
-.background-animation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1; /* Keep behind content */
-    background: linear-gradient(to bottom, rgba(200, 180, 255, 0.2), rgba(255, 255, 255, 0.1)); /* Optional gradient */
-}
-
