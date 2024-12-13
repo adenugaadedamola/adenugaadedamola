@@ -79,6 +79,41 @@ font-weight: lighter;
         width: 100%; /* Take up full width */
     }
 }
+
+
+/* Navigation bar for smaller screens */
+.nav-links {
+    display: flex;
+    justify-content: space-between; /* Spread links evenly */
+    gap: 10px; /* Reduce spacing between links */
+    overflow-x: auto; /* Allow horizontal scrolling if necessary */
+    white-space: nowrap; /* Prevent wrapping of links */
+    padding: 0 10px; /* Add some horizontal padding */
+}
+
+/* Navigation links styling */
+.nav-links li {
+    font-size: 0.9rem; /* Reduce font size slightly */
+    margin: 0; /* Remove extra margin */
+}
+
+.nav-links a {
+    padding: 5px 10px; /* Add smaller padding around links */
+    white-space: nowrap; /* Ensure links stay on one line */
+}
+
+/* Prevent scaling up on hover for smaller screens */
+.nav-links a:hover {
+    transform: none; /* Remove scaling effect */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .nav-links {
+        font-size: 0.85rem; /* Further reduce size for very small screens */
+    }
+}
+
 /* Moving images container */
 .moving-images-container {
     position: relative;
@@ -147,9 +182,12 @@ font-weight: lighter;
         margin: 0 auto; /* Center align */
     }
 
+    .nav-links {
+        flex-wrap: wrap; /* Stack navigation links */
+    }
 
     .nav-links li {
-        margin-bottom: 5px; /* Add spacing between links */
+        margin-bottom: 2px; /* Add spacing between links */
     }
 }
 
