@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Garamond', serif;
+            font-size: 16px;
+            background-color: #9a86b3;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(34, 34, 34, 0.9), rgba(34, 34, 34, 0));
+            padding: 10px 20px;
+            animation: fadeIn 2s ease-in;
+            opacity: 0;
+            animation-fill-mode: forwards;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: background 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .navbar.scrolled {
+            background: rgba(27, 3, 44, 0.9);
+        }
+
+        .navbar h1 {
+            color: white;
+            margin: 0;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+            flex-grow: 1;
+        }
+
+        .navbar ul li {
+            margin-right: 20px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #9a86b3;
+            background-color: white;
+            padding: 5px 10px;
+            border-radius: 6px;
+        }
+
+        .navbar .dropdown {
+            position: relative;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .navbar .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #222;
+            right: 0;
+            top: 100%;
+            min-width: 150px;
+            z-index: 1;
+            flex-direction: column;
+        }
+
+        .navbar .dropdown-content a {
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .navbar .dropdown-content a:hover {
+            background-color: #675183;
+        }
+
+        /* Image Section at the Top */
+        .header-image {
+            width: 100%;
+            margin-top: 60px;
+            max-height: 400px;
+            overflow: hidden;
+        }
+
+        .header-image img {
+            width: 100%;
+            height: 150px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Gallery Section Styles */
+        .gallery-container {
+            margin-top: 100px;
+            padding: 20px;
+        }
+
+        .gallery-dropdown {
+            background: #9a86b3;
+            color: rgb(0, 0, 0);
+            padding: 15px;
+            border: 2px solid #9a86b3;
+            cursor: pointer;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gallery-dropdown:hover {
+            background-color: #50376e;
+        }
+
+        .gallery-dropdown .line {
+            border-bottom: 2px solid rgb(0, 0, 0);
+            flex-grow: 1;
+            margin: 0 10px;
+        }
+
+        /* Grid Layout for Images */
+        .gallery-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 10px;
+        }
+        .hidden{
+            display: none;
+        }
+        .gallery-images .image-container {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .gallery-images img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .gallery-images img:hover {
+            transform: scale(1.05);
+        }
+
+        .image-title {
+            margin-top: 10px;
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Modal for Enlarged Image */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+       /* Modal Content Image */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;  
+    max-width: 500px;  
+    max-height: 80vh; 
+    object-fit: contain; /* Ensures the image maintains its aspect ratio */
+}
+
+
+        .modal-content:hover {
+            cursor: zoom-out;
+        }
+
+        .close {
+            color: #f1f1f1;
+            font-size: 40px;
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            font-weight: bold;
+            visibility: hidden;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #f1f1f1;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar ul {
+                display: none;
+            }
+            .menu-icon {
+                display: block;
+                margin-right: 30px;
+            }
+            .dropdown-content {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 50px;
+                right: 20px;
+                width: 150px;
+                background-color: #715493;
+            }
+            .navbar .dropdown-content a {
+                padding: 10px;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="navbar">
+        <h1>Damzy art</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="project.html">Project</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="works.html">Works</a></li>
+        </ul>
+        <div class="dropdown">
+            <div class="menu-icon">
+                &#9776;
+            </div>
+            <div class="dropdown-content">
+                <a href="index.html">Home</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+                <a href="project.html">Project</a>
+                <a href="about.html">About</a>
+                <a href="works.html">Works</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Section at the Top -->
+    <div class="header-image">
+        <img src="logoo/GALLERY CURSIVE.jpg" alt="Top Image" class="top-image">
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="gallery-container">
+        <!-- Recent Illustrations Dropdown -->
+        <div class="gallery-dropdown" onclick="toggleImages('recent')">
+            Recent Illustrations
+            <div class="line"></div>
+            <span>&#9660;</span>
+        </div>
+        <div class="gallery-images" id="recent-images">
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/CRYING ANGEL REIMAGINED inv 2.jpg" alt="Illustration 1">
+                <div class="image-title">CRYING ANGEL REIMAGINED BLACK</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/crying angel reimagined clean ni.jpg" alt="Illustration 2">
+                <div class="image-title">CRYING ANGEL REIMAGINED</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/Atlas reimagined invert soft.jpg" alt="Illustration 3">
+                <div class="image-title">ATLAS REIMAGINED BLACK</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/atlas reimagined.jpg" alt="Illustration 4">
+                <div class="image-title">ATLAS REIMAGINED</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/chelsea kit launch model oceanlewis digital.jpg" alt="Illustration 5">
+                <div class="image-title">CHELSEA FC KIT LAUNCH MODEL OCEANLEWIS - DIGITAL</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/orange eyes edited.jpg" alt="Illustration 6">
+                <div class="image-title">ORANGE GIRL PENCIL ILLUSTRATION</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/tupac shakur.jpg" alt="Illustration 7">
+                <div class="image-title">TUPAC SHAKUR PENCIL ILLUSTRATION</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/tommy digital.jpg" alt="Illustration 8">
+                <div class="image-title">MR THOMAS SHELBY DIGITAL</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/ishowspeed digital.jpg" alt="Illustration 9">
+                <div class="image-title">ISHOWSPEED DIGITAL ILLUSTRATION</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/snakehair.jpg" alt="Illustration 10">
+                <div class="image-title">SNAKES PENCIL ILLUSTRATION</div>
+            </div>
+           
+        </div>
+
+        <!-- Past Illustrations Dropdown -->
+        <div class="gallery-dropdown" onclick="toggleImages('past')">
+            Past Illustrations
+            <div class="line"></div>
+            <span>&#9660;</span>
+        </div>
+        <div class="gallery-images" id="past-images">
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/huey and riley.jpg" alt="Past Illustration 1">
+                <div class="image-title">HUEY AND RILEY DIGITAL</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/yiger.jpg" alt="Past Illustration 2">
+                <div class="image-title">TIGERS PENCIL ILLUSTRATION</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/painting blue sky.jpg" alt="Past Illustration 3">
+                <div class="image-title">IN THOUGHTS PAINTING</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/kdot.jpg" alt="Past Illustration 4">
+                <div class="image-title">KDOT PENCIL ILLUSTRATION</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/lipsgirl.jpg" alt="Past Illustration 5">
+                <div class="image-title">BLUE EYED GIRL PENCIL ILLUSTRATION</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/oceanlewis.jpg" alt="Past Illustration 6">
+                <div class="image-title">CHELSEA FC KIT LAUNCH MODEL OCEANLEWIS - PENCIL ILLUSTRATION</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/ronaldo phenomeno.jpg" alt="Past Illustration 7">
+                <div class="image-title">R9 RONALDO ILLUSTRATION</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/funny dog.jpg" alt="Past Illustration 8">
+                <div class="image-title">DOG MEME ILLUSTRATION</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/glow.jpg" alt="Past Illustration 9">
+                <div class="image-title">GLOW ANIME CHARACTER</div>
+            </div>
+            <div class="image-container" onclick="openModal(this)">
+                <img src="img/never satisfied.jpg" alt="Past Illustration 10">
+                <div class="image-title">IMAGE PROMPT FOR SONG COVER <a href="https://www.youtube.com/watch?v=T8FeLB82fPs&pp=ygUXbmV2ZXIgc2F0aXNmaWVkIGRlYm9vbGE%3D" target="_blank"> 'Never Satisfied'</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Enlarged Image -->
+    <div id="modal" class="modal" onclick="closeModal()">
+        <img class="modal-content" id="modal-img">
+        <span class="close" onclick="closeModal()">×</span>
+    </div>
+    <script>
+        // Toggle visibility of images for recent and past illustrations
+        function toggleImages(section) {
+            const images = document.getElementById(section + '-images');
+            images.classList.toggle('hidden');  // Toggle the hidden class
+        }
+    
+        // Open modal with enlarged image
+        function openModal(img) {
+            const modal = document.getElementById("modal");
+            const modalImg = document.getElementById("modal-img");
+            modal.style.display = "block";
+            modalImg.src = img.querySelector("img").src; // Get the image inside the container
+        }
+    
+        // Close modal
+        function closeModal() {
+            const modal = document.getElementById("modal");
+            modal.style.display = "none";
+        }
+    
+        // Change navbar background color on scroll
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+    
+     <script>
+        // Toggle dropdown menu visibility on smaller screens
+        document.querySelector('.menu-icon').addEventListener('click', function () {
+            var content = document.querySelector('.dropdown-content');
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Change navbar background color on scroll
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
