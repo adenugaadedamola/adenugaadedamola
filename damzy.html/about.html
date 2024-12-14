@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Garamond', serif;
+            font-size: 16px;
+            font-style: italic;
+            background-color: #9a86b3;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(34, 34, 34, 0.9), rgba(34, 34, 34, 0));
+            padding: 10px 20px;
+            animation: fadeIn 2s ease-in;
+            opacity: 0;
+            animation-fill-mode: forwards;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: background 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .navbar.scrolled {
+            background: rgba(27, 3, 44, 0.9);
+        }
+
+        .navbar h1 {
+            color: white;
+            margin: 0;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+            flex-grow: 1;
+        }
+
+        .navbar ul li {
+            margin-right: 20px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #9a86b3;
+            background-color: white;
+            padding: 5px 10px;
+            border-radius: 6px;
+        }
+
+        .navbar .dropdown {
+            position: relative;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .navbar .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #222;
+            right: 0;
+            top: 100%;
+            min-width: 150px;
+            z-index: 1;
+            flex-direction: column;
+        }
+
+        .navbar .dropdown-content a {
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .navbar .dropdown-content a:hover {
+            background-color: #675183;
+        }
+
+        .about-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 80px auto 20px;
+            padding: 20px;
+            background-color: #9a86b3;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .about-image {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .footer {
+            background-color: #9a86b3;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .navbar ul {
+                display: none;
+            }
+            .menu-icon {
+                display: block;
+                margin-right: 30px;
+            }
+            .dropdown-content {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 50px;
+                right: 20px;
+                width: 150px;
+                background-color: #715493;
+            }
+            .navbar .dropdown-content a {
+                padding: 10px;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="navbar">
+        <h1>Damzy art</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="project.html">Project</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="works.html">Works</a></li>
+        </ul>
+        <div class="dropdown">
+            <div class="menu-icon">
+                &#9776;
+            </div>
+            <div class="dropdown-content">
+                <a href="index.html">Home</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+                <a href="project.html">Project</a>
+                <a href="about.html">About</a>
+                <a href="works.html">Works</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about-container">
+        <!-- Image Section -->
+        <div class="about-image">
+            <img src="img/damzy.jpg" alt="Your Image" class="about-img">
+        </div>
+
+        <!-- Text Section -->
+        <div class="about-text">
+            <h2>About Me</h2>
+            <p>Yooooooooooo, 
+                this is Adedamola, some say Damzy. 
+                I specialize in intricate pencil and pen illustrations that invite viewers to explore the depths of introspection.</p>
+            <p>
+                I'm just a chill guy so my inspiration comes from all over the place—experiences, music I hear, social media, other artists.
+                I started out not copying ;) but replicating works I see on the internet. I want to take the next step and enhance my work.</p>
+            <p>To provoke thoughts and carry universal themes, every piece of art will have a meaning. My goal is to be a bridge between what we say/see and what we actually feel, leaving a mark on those who experience my work.</p>
+            <p>Art, work, and school ain't everything, though. Sometimes you need to take time and chill. I do that when I have no inspiration 😂.</p>
+            <p>I'm open to art projects, collaborations and commissions, send me a message <a href="contact.html">here</a></p>
+        </div>
+    </div>
+    <script>
+        // Toggle dropdown menu visibility on smaller screens
+        document.querySelector('.menu-icon').addEventListener('click', function () {
+            var content = document.querySelector('.dropdown-content');
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Change navbar background color on scroll
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Created by Adenuga Adedamola</p>
+    </div>
+</body>
+</html>
