@@ -1,8 +1,0 @@
-User-agent: Googlebot
-Disallow: /private/
-Allow: /
-Sitemap: https://www.yourwebsite.com/sitemap.xml
-
-
-User-agent: *
-Disallow: /
