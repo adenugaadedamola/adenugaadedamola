@@ -173,22 +173,21 @@ body {
         text-align: left;
     }
 }
-.social-links {
-    margin-top: 20px;
-    display: flex;
-    gap: 30px;
-    font-size: medium;
-  padding-left: 60px;
-}
-
-.social-links img {
-    width: 20px;
-    height: 20px;
-}
 
 .footer {
     background-color: #9a86b3;
     color: white;
     text-align: center;
     padding: 10px 0;
+}
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 30px;
+    font-size: medium;
+}
+
+.social-links img {
+    width: 20px;
+    height: 20px;
 }

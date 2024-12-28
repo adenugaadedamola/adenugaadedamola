@@ -215,7 +215,7 @@
 </head>
 <body>
     <div class="navbar">
-        <h1>Damzy Art</h1>
+        <h1>Adenuga Adedamola</h1>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="gallery.html">Gallery</a></li>
@@ -259,7 +259,27 @@
         <img id="modalImage" src="" alt="Zoomed Image">
     </div>
 
+    <script>
+        // Toggle dropdown menu visibility on smaller screens
+        document.querySelector('.menu-icon').addEventListener('click', function () {
+            var content = document.querySelector('.dropdown-content');
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Change navbar background color on scroll
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+   
+
 <script>
+    
     // Toggle dropdown menu visibility on smaller screens
     document.querySelector('.menu-icon').addEventListener
         // Event listeners for the project gallery images
