@@ -3,9 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>dmzy153</title>
+    
+    <link rel="icon" type="image/png" href="img/damzy.jpg">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="navbar">
+        <h1>Adenuga Adedamola </h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="project.html">Project</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="works.html">Works</a></li>
+            <li><a href="shop.html">Shop</a></li>
+        </ul>
+        <div class="dropdown">
+            <div class="menu-icon">
+                &#9776;
+            </div>
+            <div class="dropdown-content">
+                <a href="index.html">Home</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+                <a href="project.html">Project</a>
+                <a href="about.html">About</a>
+                <a href="works.html">Works</a>
+                <a href="shop.html">Shop</a>
+            </div>
+        </div>
+    </div>
     <div id="dmzy153"></div>
     <div>
     <script data-cfasync="false" type="text/javascript" src="https://app.ecwid.com/script.js?113725049&data_platform=code&data_date=2025-03-09" charset="utf-8"></script><script type="text/javascript"> xProductBrowser("categoriesPerRow=3","views=grid(20,3) list(60) table(60)","categoryView=grid","searchView=list","id=my-store-113725049");</script>
@@ -20,6 +49,22 @@
 <script data-cfasync="false" type="text/javascript" src="https://app.ecwid.com/script.js?113725049&data_platform=code&data_date=2025-03-09" charset="utf-8"></script>
 <script type="text/javascript">Ecwid.init();</script>
 </div>
+<script>
+    // Toggle dropdown menu visibility on smaller screens
+    document.querySelector('.menu-icon').addEventListener('click', function () {
+        var content = document.querySelector('.dropdown-content');
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    });
 
+    // Change navbar background color on scroll
+    window.addEventListener('scroll', function () {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+</script>
 </body>
 </html>
