@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Frame-Options" content="DENY">
     <title>Contact</title>
     
     
@@ -291,7 +292,7 @@
     <!-- Contact Section -->
     <div class="contact-container">
         <h1 style="text-decoration: underline;">Contact Me</h1>
-        <form id="contactForm" action="https://formsubmit.co/damzymakesart10@gmail.com" method="POST">
+        <form id="contactForm" action="https://formsubmit.co/dmzy153@gmail.com" method="POST" data-recaptcha="true">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
             <label for="name" style="color: #ffffff; font-size: small;">Name</label>
@@ -302,7 +303,29 @@
             <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
             <button type="submit">Submit</button>
         </form>
+        <script>
+            document.getElementById("contactForm").addEventListener("submit", function(event) {
+                let name = document.getElementById("name").value.trim();
+                let email = document.getElementById("email").value.trim();
+                let message = document.getElementById("message").value.trim();
+            
+                // Simple Validation
+                if (name === "" || email === "" || message === "") {
+                    alert("Please fill in all fields.");
+                    event.preventDefault(); // Stop form submission
+                    return;
+                }
+            
+                // Validate Email Format
+                let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                if (!email.match(emailPattern)) {
+                    alert("Enter a valid email address.");
+                    event.preventDefault();
+                }
+            });
+            </script>
         <p class="success-message" id="successMessage" style="display:none;"></p>
+
 
         <div class="contact-info">
             <p style="color: #ffffff;font-size:medium">Email: <a href="mailto:damzymakesart10@gmail.com">damzymakesart10@gmail.com</a></p>
